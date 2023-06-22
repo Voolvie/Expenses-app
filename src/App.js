@@ -4,6 +4,7 @@ import ExpenseItem from "./components/ExpenseItem";
 import Card from "./components/Card";
 import NewExpense from "./components/NewExpense/NewExpense";
 import ExpensesFilter from "./components/ExpensesFilter";
+import ExpensesChart from "./components/ExpensesChart";
 
 const INITIAL_EXPENSES = [
   {
@@ -37,11 +38,12 @@ function App(props) {
     <Card className="expenses">
     <NewExpense onAddExpense={addExpenseHandler} />
     <ExpensesFilter selected={filteredYear} onChangeFilter={filterChangeHandler}/>
-    {filteredExpenses.length === 0 ?
+    <ExpensesChart expenses={filteredExpenses} />    {filteredExpenses.length === 0 ?
      <p>No expenses found</p> :
       filteredExpenses.map((expense) =>
        <ExpenseItem key={expense.id} title={expense.title} date={expense.date} amount={expense.amount}/>
        ) }
+       
     </Card>
     </div>
   );
